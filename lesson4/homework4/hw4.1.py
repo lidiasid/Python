@@ -9,6 +9,7 @@ for i in range(len(n)):
     for j in range(len(m)):
         if m[j] == n[i] and m[j] not in final:
             final.append(m[j])
-print(final)
+sort = sorted(final)            
+print(sort)
 
 
