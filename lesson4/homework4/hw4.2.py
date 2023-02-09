@@ -5,3 +5,19 @@
 # нескольких собирающих модулей. Собирающий модуль за один заход, находясь непосредственно перед некоторым кустом, 
 # собирает ягоды с этого куста и с двух соседних с ним. Напишите программу для нахождения максимального числа ягод, 
 # которое может собрать за один заход собирающий модуль, находясь перед некоторым кустом заданной во входном файле грядки.
+
+def max_berry_pick(N, berry_counts):
+    max_sum = 0
+    for i in range(N):
+        if i == 0:
+            curr_sum = berry_counts[i] + berry_counts[i + 1] + berry_counts[N - 1]
+        elif i == N - 1:
+            curr_sum = berry_counts[i] + berry_counts[i - 1] + berry_counts[0]
+        else:
+            curr_sum = berry_counts[i] + berry_counts[i - 1] + berry_counts[i + 1]
+        max_sum = max(max_sum, curr_sum)
+    return max_sum
+
+N = int(input("Введите количество кустов: ").strip())
+berry_counts = list(map(int, input("Введите количество ягод на каждом кусте (через пробел): ").strip().split()))
+print(max_berry_pick(N, berry_counts))
